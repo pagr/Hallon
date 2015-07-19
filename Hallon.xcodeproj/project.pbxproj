@@ -12,7 +12,22 @@
 		DA366E8F1B59A47300088914 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA366E8D1B59A47300088914 /* Main.storyboard */; };
 		DA366E911B59A47300088914 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA366E901B59A47300088914 /* Assets.xcassets */; };
 		DA366E941B59A47300088914 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA366E921B59A47300088914 /* LaunchScreen.storyboard */; };
+		DA366E9C1B59A4D800088914 /* HallonScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA366E9B1B59A4D800088914 /* HallonScraper.swift */; };
+		DA366E9E1B59A61A00088914 /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA366E9D1B59A61A00088914 /* CommonExtensions.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DA07F9841B5C25BB0006EBC9 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DA366E861B59A47300088914 /* Hallon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hallon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,6 +37,8 @@
 		DA366E901B59A47300088914 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA366E931B59A47300088914 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA366E951B59A47300088914 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA366E9B1B59A4D800088914 /* HallonScraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HallonScraper.swift; sourceTree = "<group>"; };
+		DA366E9D1B59A61A00088914 /* CommonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +77,8 @@
 				DA366E901B59A47300088914 /* Assets.xcassets */,
 				DA366E921B59A47300088914 /* LaunchScreen.storyboard */,
 				DA366E951B59A47300088914 /* Info.plist */,
+				DA366E9B1B59A4D800088914 /* HallonScraper.swift */,
+				DA366E9D1B59A61A00088914 /* CommonExtensions.swift */,
 			);
 			path = Hallon;
 			sourceTree = "<group>";
@@ -74,6 +93,7 @@
 				DA366E821B59A47300088914 /* Sources */,
 				DA366E831B59A47300088914 /* Frameworks */,
 				DA366E841B59A47300088914 /* Resources */,
+				DA07F9841B5C25BB0006EBC9 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
@@ -135,6 +155,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA366E8C1B59A47300088914 /* ViewController.swift in Sources */,
+				DA366E9C1B59A4D800088914 /* HallonScraper.swift in Sources */,
+				DA366E9E1B59A61A00088914 /* CommonExtensions.swift in Sources */,
 				DA366E8A1B59A47300088914 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,6 +271,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Hallon/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Monafide.Hallon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -260,6 +283,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Hallon/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Monafide.Hallon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -285,6 +309,7 @@
 				DA366E9A1B59A47300088914 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
