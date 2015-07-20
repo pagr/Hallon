@@ -18,6 +18,11 @@ class HallonScraper {
     struct HallonUsage {
         let dataUsed:Double
         let dataMax:Double
+        var dataLeft: Double {
+            get {
+                return dataMax-dataUsed
+            }
+        }
         let callsUsed:Double
         let textsUsed:Double
     }
@@ -28,18 +33,9 @@ class HallonScraper {
     init(username: String, password: String){
         self.username = username
         self.password = password
-        getDataUsage{
-            switch $0{
-            case .Success(let result):
-                    print(result)
-            case .Error(let error):
-                print(error)
-                
-            }
-        }
     }
     
-    func getLoginParams(callback: [String:String] -> ()){
+    private func getLoginParams(callback: [String:String] -> ()){
         let url = NSURL(string: "https://www.hallon.se/logga-in")!
         //let webpage = NSString(data: NSData(contentsOfURL: url)!, encoding: NSUTF8StringEncoding)! as String
         let urlSession = NSURLSession.sharedSession()
@@ -50,17 +46,19 @@ class HallonScraper {
                 let tmp = NSHTTPCookie.cookiesWithResponseHeaderFields(response.allHeaderFields as! [String:String], forURL: response.URL!)
                 NSHTTPCookieStorage.sharedHTTPCookieStorage().setCookies(tmp, forURL: response.URL, mainDocumentURL: nil)
             }
-            let webpage = NSString(data: data!, encoding: NSUTF8StringEncoding)! as String
-            
-            let matches = webpage.matchesForRegexInText("<input [^/]+\\/>")
-            var params = [String:String]()
-            for match in matches {
-                if let parameter = match.matchesForRegexInText("name=\"([^\"]+)\"").first,
-                    let value = match.matchesForRegexInText("value=\"([^\"]+)\"").first{
-                        params[parameter] = value
+            if let data = data,
+                let webpage = NSString(data: data, encoding: NSUTF8StringEncoding) as? String{
+                let matches = webpage.matchesForRegexInText("<input [^/]+\\/>")
+                var params = [String:String]()
+                for match in matches {
+                    if let parameter = match.matchesForRegexInText("name=\"([^\"]+)\"").first,
+                        let value = match.matchesForRegexInText("value=\"([^\"]+)\"").first{
+                            params[parameter] = value
+                    }
                 }
+                return callback(params)
             }
-            callback(params)
+            callback([String:String]())
         }?.resume()
     }
     
@@ -87,6 +85,7 @@ class HallonScraper {
                 }
                 if let data = data,
                     let webPage = NSString(data: data, encoding: NSUTF8StringEncoding) as? String{
+                        //print(webPage)
                         let dataResults = webPage.matcheGroupsForRegexInText("class=\"amountused\">(\\d,?\\d*)</span> av (\\d,?\\d*) GB")
                         if dataResults.count == 2,
                             let usedCalls = webPage.matcheGroupsForRegexInText("class=\"amountused\">(\\d,?\\d*)</span> Av obegr&#228;nsade samtal").first?.doubleValue,
@@ -95,7 +94,13 @@ class HallonScraper {
                             let totalData = dataResults[1].doubleValue
                             let usedData = totalData - dataResults[0].doubleValue
                             return callback(.Success(value: HallonUsage(dataUsed: usedData, dataMax: totalData, callsUsed: usedCalls, textsUsed: usedTexts)))
+                        } else {
+                            print("Probably failed to log in")
+                            return self.getDataUsage(callback)
                         }
+                }
+                if let response = response as? NSHTTPURLResponse{
+                    return callback(.Error(error: NSError(domain: "Server error", code: response.statusCode, userInfo: nil)))
                 }
                 return callback(.Error(error: NSError(domain: "Server error", code: 1337, userInfo: nil)))
                 }?.resume()

@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA07F9B51B5C3C350006EBC9 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA07F9B31B5C3C350006EBC9 /* Interface.storyboard */; };
+		DA07F9B71B5C3C350006EBC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA07F9B61B5C3C350006EBC9 /* Assets.xcassets */; };
+		DA07F9BE1B5C3C350006EBC9 /* HallonWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DA07F9BD1B5C3C350006EBC9 /* HallonWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DA07F9C51B5C3C350006EBC9 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA07F9C41B5C3C350006EBC9 /* InterfaceController.swift */; };
+		DA07F9C71B5C3C350006EBC9 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA07F9C61B5C3C350006EBC9 /* ExtensionDelegate.swift */; };
+		DA07F9C91B5C3C350006EBC9 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA07F9C81B5C3C350006EBC9 /* NotificationController.swift */; };
+		DA07F9CB1B5C3C350006EBC9 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA07F9CA1B5C3C350006EBC9 /* ComplicationController.swift */; };
+		DA07F9CD1B5C3C350006EBC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA07F9CC1B5C3C350006EBC9 /* Assets.xcassets */; };
+		DA07F9D11B5C3C350006EBC9 /* HallonWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = DA07F9B11B5C3C350006EBC9 /* HallonWatch.app */; };
+		DA07F9D91B5C3E1C0006EBC9 /* HallonScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA366E9B1B59A4D800088914 /* HallonScraper.swift */; };
+		DA07F9DA1B5C3E1C0006EBC9 /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA366E9D1B59A61A00088914 /* CommonExtensions.swift */; };
+		DA07F9DC1B5C6B790006EBC9 /* hallon.sketch in Resources */ = {isa = PBXBuildFile; fileRef = DA07F9DB1B5C6B790006EBC9 /* hallon.sketch */; };
 		DA366E8A1B59A47300088914 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA366E891B59A47300088914 /* AppDelegate.swift */; };
 		DA366E8C1B59A47300088914 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA366E8B1B59A47300088914 /* ViewController.swift */; };
 		DA366E8F1B59A47300088914 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA366E8D1B59A47300088914 /* Main.storyboard */; };
@@ -16,6 +28,23 @@
 		DA366E9E1B59A61A00088914 /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA366E9D1B59A61A00088914 /* CommonExtensions.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		DA07F9BF1B5C3C350006EBC9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA366E7E1B59A47300088914 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA07F9BC1B5C3C350006EBC9;
+			remoteInfo = "HallonWatch Extension";
+		};
+		DA07F9CF1B5C3C350006EBC9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA366E7E1B59A47300088914 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA07F9B01B5C3C350006EBC9;
+			remoteInfo = HallonWatch;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		DA07F9841B5C25BB0006EBC9 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -23,13 +52,38 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
+				DA07F9D11B5C3C350006EBC9 /* HallonWatch.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA07F9D71B5C3C350006EBC9 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DA07F9BE1B5C3C350006EBC9 /* HallonWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DA07F9B11B5C3C350006EBC9 /* HallonWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HallonWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA07F9B41B5C3C350006EBC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		DA07F9B61B5C3C350006EBC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DA07F9B81B5C3C350006EBC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA07F9BD1B5C3C350006EBC9 /* HallonWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "HallonWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA07F9C31B5C3C350006EBC9 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		DA07F9C41B5C3C350006EBC9 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		DA07F9C61B5C3C350006EBC9 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		DA07F9C81B5C3C350006EBC9 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		DA07F9CA1B5C3C350006EBC9 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		DA07F9CC1B5C3C350006EBC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DA07F9CE1B5C3C350006EBC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA07F9DB1B5C6B790006EBC9 /* hallon.sketch */ = {isa = PBXFileReference; lastKnownFileType = file; path = hallon.sketch; sourceTree = "<group>"; };
 		DA366E861B59A47300088914 /* Hallon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hallon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA366E891B59A47300088914 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA366E8B1B59A47300088914 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,6 +96,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		DA07F9BA1B5C3C350006EBC9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DA366E831B59A47300088914 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -52,10 +113,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA07F9B21B5C3C350006EBC9 /* HallonWatch */ = {
+			isa = PBXGroup;
+			children = (
+				DA07F9B31B5C3C350006EBC9 /* Interface.storyboard */,
+				DA07F9B61B5C3C350006EBC9 /* Assets.xcassets */,
+				DA07F9B81B5C3C350006EBC9 /* Info.plist */,
+			);
+			path = HallonWatch;
+			sourceTree = "<group>";
+		};
+		DA07F9C11B5C3C350006EBC9 /* HallonWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DA07F9C41B5C3C350006EBC9 /* InterfaceController.swift */,
+				DA07F9C61B5C3C350006EBC9 /* ExtensionDelegate.swift */,
+				DA07F9C81B5C3C350006EBC9 /* NotificationController.swift */,
+				DA07F9CA1B5C3C350006EBC9 /* ComplicationController.swift */,
+				DA07F9CC1B5C3C350006EBC9 /* Assets.xcassets */,
+				DA07F9CE1B5C3C350006EBC9 /* Info.plist */,
+				DA07F9C21B5C3C350006EBC9 /* Supporting Files */,
+			);
+			path = "HallonWatch Extension";
+			sourceTree = "<group>";
+		};
+		DA07F9C21B5C3C350006EBC9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DA07F9C31B5C3C350006EBC9 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		DA366E7D1B59A47300088914 = {
 			isa = PBXGroup;
 			children = (
+				DA07F9DB1B5C6B790006EBC9 /* hallon.sketch */,
 				DA366E881B59A47300088914 /* Hallon */,
+				DA07F9B21B5C3C350006EBC9 /* HallonWatch */,
+				DA07F9C11B5C3C350006EBC9 /* HallonWatch Extension */,
 				DA366E871B59A47300088914 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,6 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				DA366E861B59A47300088914 /* Hallon.app */,
+				DA07F9B11B5C3C350006EBC9 /* HallonWatch.app */,
+				DA07F9BD1B5C3C350006EBC9 /* HallonWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,6 +184,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		DA07F9B01B5C3C350006EBC9 /* HallonWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA07F9D81B5C3C350006EBC9 /* Build configuration list for PBXNativeTarget "HallonWatch" */;
+			buildPhases = (
+				DA07F9AF1B5C3C350006EBC9 /* Resources */,
+				DA07F9D71B5C3C350006EBC9 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DA07F9C01B5C3C350006EBC9 /* PBXTargetDependency */,
+			);
+			name = HallonWatch;
+			productName = HallonWatch;
+			productReference = DA07F9B11B5C3C350006EBC9 /* HallonWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		DA07F9BC1B5C3C350006EBC9 /* HallonWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA07F9D61B5C3C350006EBC9 /* Build configuration list for PBXNativeTarget "HallonWatch Extension" */;
+			buildPhases = (
+				DA07F9B91B5C3C350006EBC9 /* Sources */,
+				DA07F9BA1B5C3C350006EBC9 /* Frameworks */,
+				DA07F9BB1B5C3C350006EBC9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HallonWatch Extension";
+			productName = "HallonWatch Extension";
+			productReference = DA07F9BD1B5C3C350006EBC9 /* HallonWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		DA366E851B59A47300088914 /* Hallon */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA366E981B59A47300088914 /* Build configuration list for PBXNativeTarget "Hallon" */;
@@ -98,6 +230,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DA07F9D01B5C3C350006EBC9 /* PBXTargetDependency */,
 			);
 			name = Hallon;
 			productName = Hallon;
@@ -113,6 +246,12 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Monafide AB";
 				TargetAttributes = {
+					DA07F9B01B5C3C350006EBC9 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					DA07F9BC1B5C3C350006EBC9 = {
+						CreatedOnToolsVersion = 7.0;
+					};
 					DA366E851B59A47300088914 = {
 						CreatedOnToolsVersion = 7.0;
 					};
@@ -132,11 +271,30 @@
 			projectRoot = "";
 			targets = (
 				DA366E851B59A47300088914 /* Hallon */,
+				DA07F9B01B5C3C350006EBC9 /* HallonWatch */,
+				DA07F9BC1B5C3C350006EBC9 /* HallonWatch Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		DA07F9AF1B5C3C350006EBC9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA07F9B71B5C3C350006EBC9 /* Assets.xcassets in Resources */,
+				DA07F9B51B5C3C350006EBC9 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA07F9BB1B5C3C350006EBC9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA07F9CD1B5C3C350006EBC9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DA366E841B59A47300088914 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -144,12 +302,26 @@
 				DA366E941B59A47300088914 /* LaunchScreen.storyboard in Resources */,
 				DA366E911B59A47300088914 /* Assets.xcassets in Resources */,
 				DA366E8F1B59A47300088914 /* Main.storyboard in Resources */,
+				DA07F9DC1B5C6B790006EBC9 /* hallon.sketch in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		DA07F9B91B5C3C350006EBC9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA07F9C91B5C3C350006EBC9 /* NotificationController.swift in Sources */,
+				DA07F9CB1B5C3C350006EBC9 /* ComplicationController.swift in Sources */,
+				DA07F9C71B5C3C350006EBC9 /* ExtensionDelegate.swift in Sources */,
+				DA07F9D91B5C3E1C0006EBC9 /* HallonScraper.swift in Sources */,
+				DA07F9DA1B5C3E1C0006EBC9 /* CommonExtensions.swift in Sources */,
+				DA07F9C51B5C3C350006EBC9 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DA366E821B59A47300088914 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -163,7 +335,28 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		DA07F9C01B5C3C350006EBC9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA07F9BC1B5C3C350006EBC9 /* HallonWatch Extension */;
+			targetProxy = DA07F9BF1B5C3C350006EBC9 /* PBXContainerItemProxy */;
+		};
+		DA07F9D01B5C3C350006EBC9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA07F9B01B5C3C350006EBC9 /* HallonWatch */;
+			targetProxy = DA07F9CF1B5C3C350006EBC9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		DA07F9B31B5C3C350006EBC9 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DA07F9B41B5C3C350006EBC9 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		DA366E8D1B59A47300088914 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -183,6 +376,68 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		DA07F9D21B5C3C350006EBC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = HallonWatch_Extension;
+				INFOPLIST_FILE = HallonWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = Monafide.Hallon.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		DA07F9D31B5C3C350006EBC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = HallonWatch_Extension;
+				INFOPLIST_FILE = HallonWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = Monafide.Hallon.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		DA07F9D41B5C3C350006EBC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				INFOPLIST_FILE = "HallonWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Monafide.Hallon.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		DA07F9D51B5C3C350006EBC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				INFOPLIST_FILE = "HallonWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Monafide.Hallon.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
 		DA366E961B59A47300088914 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -293,6 +548,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DA07F9D61B5C3C350006EBC9 /* Build configuration list for PBXNativeTarget "HallonWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA07F9D41B5C3C350006EBC9 /* Debug */,
+				DA07F9D51B5C3C350006EBC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DA07F9D81B5C3C350006EBC9 /* Build configuration list for PBXNativeTarget "HallonWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA07F9D21B5C3C350006EBC9 /* Debug */,
+				DA07F9D31B5C3C350006EBC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		DA366E811B59A47300088914 /* Build configuration list for PBXProject "Hallon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
