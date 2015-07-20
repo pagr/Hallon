@@ -66,15 +66,9 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             modularTemplate.ringStyle = .Closed
             timelineEntry = CLKComplicationTimelineEntry(date: NSDate(), complicationTemplate: modularTemplate)
         case .ModularSmall:
-            let modularTemplate = CLKComplicationTemplateModularSmallStackImage()
-            modularTemplate.line1ImageProvider = CLKImageProvider(backgroundImage: UIImage(named: "Hallon")!, backgroundColor: nil)
-            //modularTemplate.line2TextProvider = CLKSimpleTextProvider(text: String(format: "%.1f", arguments: [hallonUsage.dataLeft]))
+            let modularTemplate = CLKComplicationTemplateModularSmallStackText()
+            modularTemplate.line1TextProvider = CLKSimpleTextProvider(text: "Hallon")
             modularTemplate.line2TextProvider = CLKSimpleTextProvider(text: String(format: "%.1f/%.1f", arguments: [hallonUsage.dataUsed,hallonUsage.dataMax]))
-            //modularTemplate.fillFraction = percent
-            //modularTemplate.ringStyle = .Open
-//            let modularTemplate = CLKComplicationTemplateModularSmallSimpleText()
-//            let str = String(format: "%.1f/%.1f GB", arguments: [hallonUsage.dataUsed,hallonUsage.dataMax])
-//            modularTemplate.textProvider = CLKSimpleTextProvider(text: str)
             timelineEntry = CLKComplicationTimelineEntry(date: NSDate(), complicationTemplate: modularTemplate)
         case .UtilitarianSmall:
             let modularTemplate = CLKComplicationTemplateUtilitarianSmallRingText()
@@ -84,6 +78,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             timelineEntry = CLKComplicationTimelineEntry(date: NSDate(), complicationTemplate: modularTemplate)
         case .ModularLarge:
             let modularTemplate = CLKComplicationTemplateModularLargeStandardBody()
+            modularTemplate.headerImageProvider = CLKImageProvider(backgroundImage: UIImage(named: "HallonSmall")!, backgroundColor: nil)
             modularTemplate.headerTextProvider = CLKSimpleTextProvider(text: "Hallon")
             let str = String(format: "%.1f/%.1f GB", arguments: [hallonUsage.dataUsed,hallonUsage.dataMax])
             modularTemplate.body1TextProvider = CLKSimpleTextProvider(text: str, shortText: "")

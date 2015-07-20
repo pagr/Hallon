@@ -62,7 +62,7 @@ class HallonScraper {
         }?.resume()
     }
     
-    func getDataUsage(callback: Result<HallonUsage, NSError> -> Void){
+    func getDataUsage(retryCount:Int  = 3, callback: Result<HallonUsage, NSError> -> Void){
         let  urlString = "https://www.hallon.se/logga-in"
         getLoginParams{
             paramz in
@@ -96,7 +96,11 @@ class HallonScraper {
                             return callback(.Success(value: HallonUsage(dataUsed: usedData, dataMax: totalData, callsUsed: usedCalls, textsUsed: usedTexts)))
                         } else {
                             print("Probably failed to log in")
-                            return self.getDataUsage(callback)
+                            if retryCount == 0{
+                                return callback(.Error(error: NSError(domain: "Failed to log in", code: 1, userInfo: nil)))
+                            }
+                            NSThread.sleepForTimeInterval(1)
+                            return self.getDataUsage(retryCount-1, callback: callback)
                         }
                 }
                 if let response = response as? NSHTTPURLResponse{
