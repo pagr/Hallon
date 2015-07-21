@@ -26,6 +26,8 @@
 		DA366E941B59A47300088914 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA366E921B59A47300088914 /* LaunchScreen.storyboard */; };
 		DA366E9C1B59A4D800088914 /* HallonScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA366E9B1B59A4D800088914 /* HallonScraper.swift */; };
 		DA366E9E1B59A61A00088914 /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA366E9D1B59A61A00088914 /* CommonExtensions.swift */; };
+		DA686ECD1B5DC68800A0ECB4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA686ECC1B5DC68800A0ECB4 /* MainViewController.swift */; };
+		DAAC75C11B5DB05A0079AD75 /* CircleProgressbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAC75C01B5DB05A0079AD75 /* CircleProgressbarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,8 @@
 		DA366E951B59A47300088914 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA366E9B1B59A4D800088914 /* HallonScraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HallonScraper.swift; sourceTree = "<group>"; };
 		DA366E9D1B59A61A00088914 /* CommonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonExtensions.swift; sourceTree = "<group>"; };
+		DA686ECC1B5DC68800A0ECB4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		DAAC75C01B5DB05A0079AD75 /* CircleProgressbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressbarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +181,8 @@
 				DA366E951B59A47300088914 /* Info.plist */,
 				DA366E9B1B59A4D800088914 /* HallonScraper.swift */,
 				DA366E9D1B59A61A00088914 /* CommonExtensions.swift */,
+				DAAC75C01B5DB05A0079AD75 /* CircleProgressbarView.swift */,
+				DA686ECC1B5DC68800A0ECB4 /* MainViewController.swift */,
 			);
 			path = Hallon;
 			sourceTree = "<group>";
@@ -329,6 +335,8 @@
 			files = (
 				DA366E8C1B59A47300088914 /* ViewController.swift in Sources */,
 				DA366E9C1B59A4D800088914 /* HallonScraper.swift in Sources */,
+				DAAC75C11B5DB05A0079AD75 /* CircleProgressbarView.swift in Sources */,
+				DA686ECD1B5DC68800A0ECB4 /* MainViewController.swift in Sources */,
 				DA366E9E1B59A61A00088914 /* CommonExtensions.swift in Sources */,
 				DA366E8A1B59A47300088914 /* AppDelegate.swift in Sources */,
 			);
