@@ -20,35 +20,19 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var dataProgressView: CircleProgressbarView!
     
-    
+    let scraper = HallonScraper(username: "paul.griffin@hotmail.com", password: "urxb72r4");
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        HallonScraper(username: "paul.griffin@hotmail.com", password: "urxb72r4").getDataUsage{
+        if let usage = scraper.getHallonUsageFromCache(){
+            self.updateUI(usage)
+        }
+        
+        scraper.getDataUsage{
             switch $0{
             case .Success(let usage):
                 NSOperationQueue.mainQueue().addOperationWithBlock{
-                    
-                    
-                    let calendar = NSCalendar.currentCalendar()
-                    let now = NSDate()
-                    let daysInMonth = calendar.rangeOfUnit(NSCalendarUnit.Day, inUnit: NSCalendarUnit.Month, forDate: now).length
-                    
-                    let startOfMonth = calendar.dateFromComponents(calendar.components([NSCalendarUnit.Year, NSCalendarUnit.Month], fromDate: now))!
-                    let secondsSinceStartOfMonth = now.timeIntervalSinceDate(startOfMonth)
-                    
-                    let daysLeft = daysInMonth - calendar.component(NSCalendarUnit.Day, fromDate: now) + 1
-
-                    self.dataProgressView.angle = usage.dataUsed / usage.dataMax
-                    self.timeProgressView.angle = secondsSinceStartOfMonth / Double(daysInMonth*24*60*60)
-                    self.dataTotalLabel.text = String(format: "av %.1f GB kvar", arguments: [usage.dataMax])
-                    self.dataLeftLabel.text = String(format: "%.1f", arguments: [usage.dataLeft])
-                    self.callsUsedLabel.text = String(format: "%.0f", arguments: [usage.callsUsed])
-                    self.textsUsedLabel.text = String(format: "%.0f", arguments: [usage.textsUsed])
-                    self.daysLeftLabel.text = String(format: "%d dagar kvar av månaden", arguments: [daysLeft])
-
-                    
+                    self.updateUI(usage);
                 }
             case .Error(let error):
                 print(error)
@@ -64,6 +48,24 @@ class MainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func updateUI(usage: HallonScraper.HallonUsage){
+        let calendar = NSCalendar.currentCalendar()
+        let now = NSDate()
+        let daysInMonth = calendar.rangeOfUnit(NSCalendarUnit.Day, inUnit: NSCalendarUnit.Month, forDate: now).length
+        
+        let startOfMonth = calendar.dateFromComponents(calendar.components([NSCalendarUnit.Year, NSCalendarUnit.Month], fromDate: now))!
+        let secondsSinceStartOfMonth = now.timeIntervalSinceDate(startOfMonth)
+        
+        let daysLeft = daysInMonth - calendar.component(NSCalendarUnit.Day, fromDate: now) + 1
+        
+        self.dataProgressView.angle = usage.dataUsed / usage.dataMax
+        self.timeProgressView.angle = secondsSinceStartOfMonth / Double(daysInMonth*24*60*60)
+        self.dataTotalLabel.text = String(format: "av %.1f GB kvar", arguments: [usage.dataMax])
+        self.dataLeftLabel.text = String(format: "%.1f", arguments: [usage.dataLeft])
+        self.callsUsedLabel.text = String(format: "%.0f", arguments: [usage.callsUsed])
+        self.textsUsedLabel.text = String(format: "%.0f", arguments: [usage.textsUsed])
+        self.daysLeftLabel.text = String(format: "%d dagar kvar av månaden", arguments: [daysLeft])
+    }
 
     /*
     // MARK: - Navigation

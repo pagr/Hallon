@@ -57,3 +57,14 @@ extension String {
         return value
     }
 }
+
+extension NSUserDefaults {
+    subscript(key: String) -> AnyObject? {
+        get {
+            return objectForKey(key)
+        }
+        set {
+            setObject(newValue, forKey: key)
+        }
+    }
+}

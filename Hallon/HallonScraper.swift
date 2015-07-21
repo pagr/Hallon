@@ -25,6 +25,7 @@ class HallonScraper {
         }
         let callsUsed:Double
         let textsUsed:Double
+        let lastUpdated: NSDate
     }
     let username: String
     let password: String
@@ -33,6 +34,27 @@ class HallonScraper {
     init(username: String, password: String){
         self.username = username
         self.password = password
+    }
+    
+    func getHallonUsageFromCache() -> HallonUsage?{
+        let d = NSUserDefaults.standardUserDefaults();
+        if let dataUsed = d["dataUsed"] as? Double,
+            let dataMax = d["dataMax"] as? Double,
+            let callsUsed = d["callsUsed"] as? Double,
+            let textsUsed = d["textsUsed"] as? Double,
+            let lastUpdated = d["lastUpdated"] as? NSDate{
+            return HallonUsage(dataUsed: dataUsed, dataMax: dataMax, callsUsed: callsUsed, textsUsed: textsUsed, lastUpdated: lastUpdated)
+        }
+        return nil
+    }
+    private func saveHallonUsageToCache(usage: HallonUsage){
+        let d = NSUserDefaults.standardUserDefaults();
+        d["dataUsed"] = usage.dataUsed
+        d["dataMax"] = usage.dataMax
+        d["callsUsed"] = usage.callsUsed
+        d["textsUsed"] = usage.textsUsed
+        d["lastUpdated"] = usage.lastUpdated
+        d.synchronize()
     }
     
     private func getLoginParams(callback: [String:String] -> ()){
@@ -93,7 +115,9 @@ class HallonScraper {
                         {
                             let totalData = dataResults[1].doubleValue
                             let usedData = totalData - dataResults[0].doubleValue
-                            return callback(.Success(value: HallonUsage(dataUsed: usedData, dataMax: totalData, callsUsed: usedCalls, textsUsed: usedTexts)))
+                            let usage = HallonUsage(dataUsed: usedData, dataMax: totalData, callsUsed: usedCalls, textsUsed: usedTexts, lastUpdated: NSDate())
+                            self.saveHallonUsageToCache(usage)
+                            return callback(.Success(value: usage))
                         } else {
                             print("Probably failed to log in")
                             if retryCount == 0{
