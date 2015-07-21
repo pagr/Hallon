@@ -9,6 +9,7 @@
 import WatchKit
 import Foundation
 import ClockKit
+import CoreGraphics
 
 
 class InterfaceController: WKInterfaceController {
@@ -21,6 +22,23 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        //debugComplications()
+        
+
+    }
+
+    override func didDeactivate() {
+        // This method is called when watch view controller is no longer visible
+        super.didDeactivate()
+    }
+    
+    
+    
+    
+    
+    
+
+    func debugComplications(){
         if let server = CLKComplicationServer.sharedInstance(){
             if let complications = server.activeComplications{
                 complications.map{
@@ -38,12 +56,5 @@ class InterfaceController: WKInterfaceController {
         } else {
             print("The complicationserver is not available :O")
         }
-
     }
-
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
-    }
-
 }

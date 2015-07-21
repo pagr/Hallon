@@ -33,11 +33,20 @@ class MainViewController: UIViewController {
             }
             self.update()
         }else{
-            let loginViewController = storyboard!.instantiateViewControllerWithIdentifier("loginViewController")
-            presentViewController(loginViewController, animated: animated, completion: { })
+            logout(animated)
         }
     }
+
+    @IBAction func logoutButtonPressed(sender: AnyObject) {
+        logout(true)
+    }
     
+    func logout(animated: Bool){
+        let loginViewController = storyboard!.instantiateViewControllerWithIdentifier("loginViewController")
+        presentViewController(loginViewController, animated: animated, completion: { })
+        scraper?.logout()
+        scraper = nil
+    }
     func update(){
         scraper.getDataUsage{
             switch $0{

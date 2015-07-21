@@ -8,28 +8,30 @@
 
 import UIKit
 
-class loginViewController: UIViewController {
+class loginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextView: UITextField!
+    @IBOutlet weak var errorMessageLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        activityIndicator.hidden = true
     }
-    @IBOutlet weak var errorMessageLabel: UILabel!
 
     @IBAction func loginButtonPressen(sender: AnyObject) {
         loginButton.hidden = true
         activityIndicator.hidden = false
+        activityIndicator.startAnimating()
         errorMessageLabel.hidden = true
         let scraper = HallonScraper(username: emailTextView.text ?? "", password: passwordTextField.text ?? "")
-        scraper.getDataUsage(1, callback: {
+        scraper.getDataUsage(2, callback: {
             result in
             NSOperationQueue.mainQueue().addOperationWithBlock{
                 self.activityIndicator.hidden = true
+                self.activityIndicator.stopAnimating()
                 self.loginButton.hidden = false
                 switch result{
                 case .Success(value: _):
@@ -46,16 +48,28 @@ class loginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField.returnKeyType == .Next {
+            let nextView = textField.superview?.viewWithTag(textField.tag+1)
+            if let nextView = nextView as? UITextView {
+                nextView.becomeFirstResponder()
+            }else if let button = nextView as? UIButton {
+                button.sendActionsForControlEvents(.TouchUpInside)
+            }
+        }
+        return true
     }
-    */
+    /*
+    -(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    if(textField.returnKeyType==UIReturnKeyNext) {
+    UIView *next = [[textField superview] viewWithTag:textField.tag+1];
+    [next becomeFirstResponder];
+    } else if (textField.returnKeyType==UIReturnKeyDone) {
+    [textField resignFirstResponder];
+    }
+    return YES;
+    }
+*/
+    
 
 }

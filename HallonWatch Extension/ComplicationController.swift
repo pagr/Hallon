@@ -33,25 +33,29 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getCurrentTimelineEntryForComplication(complication: CLKComplication, withHandler handler: ((CLKComplicationTimelineEntry?) -> Void)) {
         print("Updating complication")
-        HallonScraper(username: "paul.griffin@hotmail.com", password: "urxb72r4").getDataUsage{
-            switch $0{
-            case .Success(let hallonUsage):
-                print("Sucess")
-                let timelineEntry = self.getComplicationForUsage(hallonUsage, family: complication.family)
-                if timelineEntry == nil,
-                    let modularTemplate = self.getDefaultComplication(complication){
+        if let scraper = HallonScraper(){
+            scraper.getDataUsage{
+                switch $0{
+                case .Success(let hallonUsage):
+                    print("Sucess")
+                    let timelineEntry = self.getComplicationForUsage(hallonUsage, family: complication.family)
+                    if timelineEntry == nil,
+                        let modularTemplate = self.getDefaultComplication(complication){
+                            return handler(CLKComplicationTimelineEntry(date: NSDate(), complicationTemplate: modularTemplate))
+                    }
+                    return handler(timelineEntry)
+                case .Error(let error):
+                    print(error)
+                    if let modularTemplate = self.getDefaultComplication(complication){
                         return handler(CLKComplicationTimelineEntry(date: NSDate(), complicationTemplate: modularTemplate))
+                    }
+                    handler(nil)
                 }
-                return handler(timelineEntry)
-            case .Error(let error):
-                print(error)
-                if let modularTemplate = self.getDefaultComplication(complication){
-                    return handler(CLKComplicationTimelineEntry(date: NSDate(), complicationTemplate: modularTemplate))
-                }
-                handler(nil)
             }
-            
-        };
+        } else {
+            print("Not logged in")
+            handler(nil)
+        }
     }
     
     func getComplicationForUsage(hallonUsage: HallonScraper.HallonUsage, family: CLKComplicationFamily) -> CLKComplicationTimelineEntry?{

@@ -49,6 +49,12 @@ class HallonScraper {
         d["username"] = username
         d["password"] = password
     }
+    
+    func logout(){
+        d["username"] = nil
+        d["password"] = nil
+    }
+    
     func getHallonUsageFromCache() -> HallonUsage? {
         if let dataUsed = d["dataUsed"] as? Double,
             let dataMax = d["dataMax"] as? Double,
