@@ -20,14 +20,25 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var dataProgressView: CircleProgressbarView!
     
-    let scraper = HallonScraper(username: "paul.griffin@hotmail.com", password: "urxb72r4");
+    var scraper:HallonScraper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let usage = scraper.getHallonUsageFromCache(){
-            self.updateUI(usage)
+    }
+    override func viewDidAppear(animated: Bool) {
+        if let autoLoginScraper = HallonScraper(){
+            scraper = autoLoginScraper
+            if let usage = scraper.getHallonUsageFromCache(){
+                self.updateUI(usage)
+            }
+            self.update()
+        }else{
+            let loginViewController = storyboard!.instantiateViewControllerWithIdentifier("loginViewController")
+            presentViewController(loginViewController, animated: animated, completion: { })
         }
-        
+    }
+    
+    func update(){
         scraper.getDataUsage{
             switch $0{
             case .Success(let usage):
@@ -36,11 +47,10 @@ class MainViewController: UIViewController {
                 }
             case .Error(let error):
                 print(error)
+                let loginViewController = self.storyboard!.instantiateViewControllerWithIdentifier("loginViewController")
+                self.presentViewController(loginViewController, animated: true, completion: { })
             }
         }
-
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

@@ -50,11 +50,9 @@ extension String {
         return [String]()
     }
     var doubleValue: Double{
-        let value = (self as NSString).doubleValue
-        if value == 0 {
-            return (self.stringByReplacingOccurrencesOfString(",", withString: ".") as NSString).doubleValue
-        }
-        return value
+        let value1 = (self as NSString).doubleValue
+        let value2 = (self.stringByReplacingOccurrencesOfString(",", withString: ".") as NSString).doubleValue
+        return max(value1, value2)
     }
 }
 

@@ -14,7 +14,7 @@ enum Result<T,R>{
 }
 
 class HallonScraper {
-
+    let d = NSUserDefaults.standardUserDefaults()
     struct HallonUsage {
         let dataUsed:Double
         let dataMax:Double
@@ -30,14 +30,26 @@ class HallonScraper {
     let username: String
     let password: String
     
+    init?(){
+        if let username = d["username"] as? String,
+            let password = d["password"] as? String{
+                self.username = username
+                self.password = password
+        }else{
+            self.username = "ZEBRA"
+            self.password = "zebra"
+            return nil
+        }
+    }
     
     init(username: String, password: String){
         self.username = username
         self.password = password
+
+        d["username"] = username
+        d["password"] = password
     }
-    
-    func getHallonUsageFromCache() -> HallonUsage?{
-        let d = NSUserDefaults.standardUserDefaults();
+    func getHallonUsageFromCache() -> HallonUsage? {
         if let dataUsed = d["dataUsed"] as? Double,
             let dataMax = d["dataMax"] as? Double,
             let callsUsed = d["callsUsed"] as? Double,
@@ -48,7 +60,6 @@ class HallonScraper {
         return nil
     }
     private func saveHallonUsageToCache(usage: HallonUsage){
-        let d = NSUserDefaults.standardUserDefaults();
         d["dataUsed"] = usage.dataUsed
         d["dataMax"] = usage.dataMax
         d["callsUsed"] = usage.callsUsed
