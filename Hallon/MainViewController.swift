@@ -30,8 +30,12 @@ class MainViewController: UIViewController {
             scraper = autoLoginScraper
             if let usage = scraper.getHallonUsageFromCache(){
                 self.updateUI(usage)
+                if usage.lastUpdated.timeIntervalSinceNow < -60*60{
+                    self.update()
+                }
+            } else {
+                self.update()
             }
-            self.update()
         }else{
             logout(animated)
         }

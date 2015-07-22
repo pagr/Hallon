@@ -14,7 +14,7 @@ enum Result<T,R>{
 }
 
 class HallonScraper {
-    let d = NSUserDefaults.standardUserDefaults()
+    let d = NSUserDefaults(suiteName: "group.HallonWatch")!
     struct HallonUsage {
         let dataUsed:Double
         let dataMax:Double
