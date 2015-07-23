@@ -84,7 +84,7 @@ class MainViewController: UIViewController {
         self.dataProgressView.angle = usage.dataUsed / usage.dataMax
         self.timeProgressView.angle = secondsSinceStartOfMonth / Double(daysInMonth*24*60*60)
         self.dataTotalLabel.text = String(format: "av %.1f GB kvar", arguments: [usage.dataMax])
-        self.dataLeftLabel.text = String(format: "%.1f", arguments: [usage.dataLeft])
+        self.dataLeftLabel.text = String(format: "%.2f", arguments: [usage.dataLeft])
         self.callsUsedLabel.text = String(format: "%.0f", arguments: [usage.callsUsed])
         self.textsUsedLabel.text = String(format: "%.0f", arguments: [usage.textsUsed])
         self.daysLeftLabel.text = String(format: "%d dagar kvar av månaden", arguments: [daysLeft])
